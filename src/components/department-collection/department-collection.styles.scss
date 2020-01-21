@@ -1,0 +1,54 @@
+.title{
+    background: #e8edf2;
+    height: 50px;
+    margin-bottom: 50px;
+
+    h4{
+        font-family: 'Montserrat', sans-serif;
+        // font-weight: lighter;
+        font-size: 2em;
+        color: #555555;
+        padding: 10px 0 0 20px;
+    }
+}
+
+.row{
+
+  
+    .card{
+        
+        text-align: center;
+        padding: 10px;
+        border-radius: 10px;
+        height: 180px;
+        box-shadow: 0px 5px 25px -4px rgba(150, 149, 149, 0.78);
+    }
+
+    .progress {
+        background-color: #d8d8d8;
+        border-radius: 20px;
+        height: 12px;
+        width: 200px;
+        margin-top: 20px;
+        position: absolute;
+        left: 50%;
+        transform: translate(-50%);
+    } 
+
+    .progress-done {
+        background: linear-gradient(to left, rgb(47, 151, 177), rgb(74, 202, 149));
+        // box-shadow: 0 3px 3px -5px #F2709C, 0 2px 5px #F2709C; 
+        border-radius: 20px;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        width: 50%;
+        opacity: 1;
+        transition: .3s ease 0.3s;
+    }
+
+    
+}
+
