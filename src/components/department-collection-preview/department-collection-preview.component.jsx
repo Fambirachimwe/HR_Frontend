@@ -23,7 +23,6 @@ const DeparmentPreview = ({departments}) => (
 
              )) 
         }
-
     </div>  
 
 
