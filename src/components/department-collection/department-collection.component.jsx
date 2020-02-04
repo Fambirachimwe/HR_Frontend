@@ -9,6 +9,9 @@ import { connect } from 'react-redux';
 
 
 import fetchAction from '../../redux/departments/departments.actions';
+//  import the selectors 
+import {DeparmentLabelNamesSelector, KeyIssuesSelector }  from '../../redux/departments/department.selectors';
+
 
 
 
@@ -23,10 +26,14 @@ class DepartmentCollection extends React.Component {
             }
         )
 
+        // console.log(this.props.fromSelectors);
+        
     }
 
 
     render() {
+        // console.log(this.props.fromSelectors);
+        // console.log(this.props.KeyIssues)
         
         return (
             <div>
@@ -56,7 +63,11 @@ class DepartmentCollection extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        departments: state.departments
+        departments: state.departments,
+        fromSelectors: DeparmentLabelNamesSelector(state),
+        KeyIssues: KeyIssuesSelector(state)
+        
+        
     }
 }
 

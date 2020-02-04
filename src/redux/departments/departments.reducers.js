@@ -2,7 +2,8 @@
 //initial state
 
 const initState = {
-    departments : []
+    departments : [],
+    
 }
 
 
@@ -16,6 +17,7 @@ const rootReducer = (state = initState, action) => {
         return state
     }
 }
+
 
 
 

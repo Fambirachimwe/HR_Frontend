@@ -1,40 +1,96 @@
-import axios from 'axios';
-// import axiosCancel from 'axios-cancel';
+const Arr = [
+    {
+        name: 'DFA',
+        cp:
+        {
+            _id: '5e203d3e521d083eb0c7a465',
+            objective: [Array],
+            name: 'customer perspective'
+        },
+        lg:
+        {
+            _id: '5e203d3e521d083eb0c7a469',
+            objective: [Array],
+            name: 'learning and growth'
+        },
+        fp:
+        {
+            _id: '5e203d3e521d083eb0c7a461',
+            objective: [Array],
+            name: 'finacial perspective'
+        }
+    },
+    {
+        name: 'faramatsi',
+        cp:
+        {
+            _id: '5e203d3e521d083eb0c7a465',
+            objective: [Array],
+            name: 'customer perspective'
+        },
+        lg:
+        {
+            _id: '5e203d3e521d083eb0c7a469',
+            objective: [Array],
+            name: 'learning and growth'
+        },
+        fp:
+        {
+            _id: '5e203d3e521d083eb0c7a461',
+            objective: [Array],
+            name: 'finacial perspective'
+        }
+    },
 
-const initState = {
-    departments: []
-}
-
-const rootReducer = (state = initState, action) => {
-    
-    if(action.type === 'fetch'){
-        return {
-            ...state,
-            departments: [...state.departments, action.departments]
+    {
+        name: 'Silkwood',
+        cp:
+        {
+            _id: '5e203d3e521d083eb0c7a465',
+            objective: [Array],
+            name: 'customer perspective'
+        },
+        lg:
+        {
+            _id: '5e203d3e521d083eb0c7a469',
+            objective: [Array],
+            name: 'learning and growth'
+        },
+        fp:
+        {
+            _id: '5e203d3e521d083eb0c7a461',
+            objective: [Array],
+            name: 'finacial perspective'
         }
     }
-    
-}
 
-const fetch = (departments) =>{
-    return {
-        type: 'fetch',
-        departments: departments
+]
+
+function Data (input) {
+    const labels = input.map(arr => {  // array with the objects containing names 
+        return (({ name}) => ({ name }))(arr)
+    });
+
+    const data = [];
+
+    const Obj = {
+        labels: [...labels.map(obj => {return obj.name})],
+        label: '',
+        backgroundColor: '#2146eb',
+        borderColor: '#2146eb',
+        data: [22, 33, 56]
     }
+
+    Arr.map(arr => {
+        Obj.label = arr.name;
+        
+        // return data.push(Obj)
+        console.log(Obj.label)
+        
+    });
+
+    return data
+
 }
 
-export const FetchDepartment = () => {
-    return (dispatch) => {
-        axios.get('http://127.0.0.1:4000/admin/department')
-        .then(res => {
-            const dpt = res.data.response;
-            dispatch(fetch(dpt))
-        })
-    }
-}
-
-
-
-
-
-export default rootReducer;
+console.log(Data(Arr))

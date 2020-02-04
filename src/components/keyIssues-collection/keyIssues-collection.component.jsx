@@ -7,40 +7,63 @@ import { connect } from 'react-redux';
 
 
 
-
-
-
-
 class KeyIsuesCollection extends React.Component {
 
+    data = () => {
 
-    // handleData = (labels, datasets) =>{
-    //     return {
-    //         labels: labels
-    //     }
-    // }
+        var arrInput = [].concat(...this.props.KeyIssues);
 
-    
-  
+        var labels = arrInput.map(arr => {  
+            return (({ name }) => ({ name }))(arr)
+        });
+
+        
+
+        arrInput === undefined ? (
+            arrInput = []
+        ) : (
+            labels = arrInput.map(arr => {
+                return arr
+                
+            })
+        )
+        
+        const dataSet = {
+            labels: [...labels.map(obj => {return obj.name})],
+            datasets: []
+        };
+        
+
+        arrInput.map(arr => {
+            
+            
+            const Obj = {
+                label: arr.name,
+                backgroundColor: '#2146eb',
+                borderColor: '#2146eb',
+                data: [22,242,22,22,22]
+            }
+            dataSet.datasets.push(Obj)
+        })
+
+        
+        return dataSet;
+      
+
+    }
 
     render() {
-        const data = {
-            labels: ['DFS', 'DFA', 'Silkwood'],
-            datasets: [
-                {
-                    label: 'Financial perspective',
-                    backgroundColor: '#2146eb',
-                    borderColor: '#2146eb',
-                    data: [22, 33, 56]
-                },
-            ]
-        }
-        console.log(); // logging the state from the redux store
-        
-        const dpt = [...this.props.departments]
-        // console.log(dpt[0]);
+
+       
+        var keyIssues = this.props.KeyIssues;
+
+        // console.log(this.data());
+
         
 
+   
+        
+        
         return (
             
             
@@ -53,16 +76,17 @@ class KeyIsuesCollection extends React.Component {
                 <div className="row">
 
                     {
-                        dpt[0] === undefined ? (
-                            dpt[0] = []
+                        keyIssues === undefined ? (
+                            keyIssues = []
                         ) : (
-                            dpt[0].map(department => {
-                            
-                            return (
-                                <div className="col s12 m6 l6" key={department._id}>
+                            keyIssues.map(keyIssue => {
+
+                                return keyIssue.map(x => {
+                                    return (
+                                <div className="col s12 m6 l6" key={x._id}>
                                     <div className="card cta" >
                                         <Bar
-                                            data={data}
+                                            data={() => this.data()}
                                             width={1}
                                             height={5}
                                             options={{
@@ -72,6 +96,9 @@ class KeyIsuesCollection extends React.Component {
                                     </div>
                                 </div>
                             )
+                                })
+                            
+                            
                         })
                         )
                         

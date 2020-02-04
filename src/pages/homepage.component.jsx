@@ -7,6 +7,13 @@ import './homepage.styles.scss';
 
 import M from 'materialize-css/dist/js/materialize.min.js';
 
+import { connect } from 'react-redux';
+
+
+//  import the selectors 
+import {DeparmentLabelNamesSelector, KeyIssuesSelector }  from '../redux/departments/department.selectors';
+
+
 
 
 class Homepage extends React.Component{
@@ -44,7 +51,7 @@ class Homepage extends React.Component{
         
                 <DepartmentCollection />
         
-                <KeyIsuesCollection />
+                <KeyIsuesCollection KeyIssues={this.props.KeyIssues} />
                 
         
         
@@ -52,9 +59,29 @@ class Homepage extends React.Component{
         )
     }
     
+}
+
+
+const mapStateToProps = (state) => {
+    return {
+        departments: state.departments,
+        fromSelectors: DeparmentLabelNamesSelector(state),
+        KeyIssues: KeyIssuesSelector(state)
+        
+        
     }
+}
 
 
-export default Homepage;
+
+// const mapDispatchToProps = (dispatch) => {
+//     return {
+//         fetchDepartment: (department) => dispatch(fetchAction(department))
+//     }
+// }
+
+
+
+export default connect(mapStateToProps)(Homepage);
 
 
